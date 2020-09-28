@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { StyleSheet, Text, View, Alert, ScrollView } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { ScreenOrientation } from "expo";
 
 import Card from "../components/Card";
 import NumberContainer from "../components/NumberContainer";
@@ -62,13 +63,13 @@ const GameScreen = (props) => {
   return (
     <View style={styles.screen}>
       <Text>Opponent's Guess</Text>
-      <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.buttonContainer}>
         <MainButton onPress={() => nextGuessHandler("Lower")}>
-          <Feather name="chevrons-down" size={30} color="white" />
+          <Feather name="chevrons-down" size={22} color="white" />
         </MainButton>
+        <NumberContainer>{currentGuess}</NumberContainer>
         <MainButton onPress={() => nextGuessHandler("Greater")}>
-          <Feather name="chevrons-up" size={30} color="white" />
+          <Feather name="chevrons-up" size={22} color="white" />
         </MainButton>
       </Card>
       <View style={styles.list}>
@@ -98,15 +99,14 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     alignItems: "center",
-    width: "70%",
+    width: "90%",
     justifyContent: "space-around",
-    marginTop: 20,
-    paddingHorizontal: 15,
+    marginTop: 5,
+    paddingHorizontal: 10,
   },
   list: {
     flex: 1,
     width: "100%",
     paddingHorizontal: "20%",
   },
-  listItem: {},
 });
